@@ -1,30 +1,24 @@
 import React, { useState } from 'react'
-import Todos from './Todos'
+
+import Form from './Form'
+import TodoList from './TodoList'
+import Footer from './Footer'
 
 const Todo = () => {
-    const [todo, setTodo] = useState("")
+    
     const [todos, setTodos] = useState([])
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        setTodos([...todos, todo])
-        setTodo("")
-        
+    const count = todos.filter((todo)=>todo.done).length;
+    const totalTodos = todos.length
 
-    }
+    
+   
   return (
-    <div>
-        {todos.map(item=><Todos key={item} item={item} />)}
+    <div className='mt-24 border' >
+        <Form todos={todos} setTodos={setTodos} />
+        <TodoList todos={todos} setTodos={setTodos} />
         
-      <form onSubmit={handleSubmit}
-      className='flex flex-col w-1/2 items-center border mx-auto' action="">
-
-        <input onChange={e=>setTodo(e.target.value)} type="text" value={todo}
-        className='ring w-1/4'/>
-
-        <button>Submit</button>
-
-      </form>
+        <Footer count={count} totalTodos={totalTodos} />
     </div>
   )
 }

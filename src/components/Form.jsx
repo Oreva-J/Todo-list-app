@@ -1,22 +1,23 @@
 import { useState } from "react"
 
-export default function Form(){
-    const [details, setDetails] = useState({firstName: "", lastName: "", phone: ""})
+export default function Form({todos, setTodos}){
+    const [todo, setTodo] = useState({name: "" , done: false})
 
-    
-    function handleSubmit(e){
+    const handleSubmit = (e) => {
         e.preventDefault()
-        return console.log("Submit")
+        setTodos([...todos, todo])
+        setTodo({name: "" , done: false})
     }
+    
     return(
-        <div className="flex flex-col items-center justify-center text-2xl">
-            {details.firstName} {details.lastName} {details.phone}
-            <form onSubmit={handleSubmit} className="flex flex-col" action="">
-                <input onChange={e=>setDetails({ ...details, firstName: e.target.value })}  className="ring" type="text" value={details.firstName} placeholder="First Name" />
-                <input onChange={e=>setDetails( { ...details, lastName:e.target.value})} className="ring" type="text" value={details.lastName} placeholder="Last Name" />
-                <input onChange={e=>setDetails( { ...details, phone: e.target.value})} className="ring" type="number" value={details.phone} placeholder="Phone" />
-                <button className="ring">Submit</button>
-            </form>
-        </div>
+        <form onSubmit={handleSubmit}
+      className='flex w-1/2 h-28 items-center justify-around mx-auto shadow-lg ' action="">
+
+        <input onChange={e=>setTodo({name: e.target.value, done: false})} type="text" value={todo.name} placeholder="Enter todo"
+        className=' w-[80%] font-semibold text-xl focus:outline-none '/>
+
+        <button className="bg-yellow-600 w-20 h-12 rounded">Add</button>
+       
+      </form>
     )
 }

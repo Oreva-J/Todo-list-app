@@ -1,14 +1,18 @@
 import React from 'react'
-import Home from './components/Home'
-import Form from './components/Form'
+// import Home from './components/Home'
+// import Form from './components/Form'
 import Todo from './components/Todo'
+import Header from './components/Header'
+import './App.css'
+import Footer from './components/Footer'
 
 const App = () => {
   return (
-    <div className='p-20'>
+    <div className='min-h-screen ring'>
+      <Header />
       {/* <Home /> */}
-      {/* <Form /> */}
-      <Todo/>
+      <Todo />
+      {/* <Footer /> */}
     </div>
   )
 }
