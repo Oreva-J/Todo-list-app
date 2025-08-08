@@ -20,7 +20,6 @@ pipeline {
         stage(Git){
             steps{
                 checkout changelog: false, poll: false, scm: scmGit(branches: [[name: '*/devops']], extensions: [], userRemoteConfigs: [[credentialsId: 'for-GitHub-Log-Dev', url: 'https://github.com/Oreva-J/Todo-list-app.git']])
-                dir
             }
         }
     }
