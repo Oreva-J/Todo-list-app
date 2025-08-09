@@ -25,6 +25,7 @@ pipeline {
                 checkout changelog: false, poll: false, scm: scmGit(branches: [[name: "${params.BRANCH_NAME}"]], extensions: [], userRemoteConfigs: [[credentialsId: 'for-GitHub-Log-Dev', url: 'https://github.com/Oreva-J/Todo-list-app.git']])
                 echo "Checked out branch: ${params.BRANCH_NAME}"
                 echo "Deployment environment: ${params.ENVIRONMENT}"
+                echo "Current workspace is SCM Poll: ${env.WORKSPACE}"
                 sh "ls"
             }
         }
